@@ -14,4 +14,8 @@ class Cart < ApplicationRecord
   def total_price
     line_items.to_a.sum { |item| item.total_price }
   end
+
+  def substract_item(line_item)
+    #line_item.quantity -= 1
+  end
 end

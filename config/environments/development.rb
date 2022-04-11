@@ -27,7 +27,8 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
-
+  #Added by me
+  config.action_cable.disable_request_forgery_protection = true
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
