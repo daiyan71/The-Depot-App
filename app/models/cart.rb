@@ -17,5 +17,6 @@ class Cart < ApplicationRecord
 
   def substract_item(line_item)
     #line_item.quantity -= 1
+    line_item.quantity -= 1
   end
 end
