@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:create]
-  before_action :set_line_item, only: %i[ show edit update destroy ]
+  before_action :set_cart, only: %i[ create removeItem]
+  before_action :set_line_item, only: %i[ show edit update destroy removeItem]
 
   # GET /line_items or /line_items.json
   def index
@@ -56,18 +56,25 @@ class LineItemsController < ApplicationController
 
   # DELETE /line_items/1 or /line_items/1.json
   def destroy
+    respond_to do |format|
+      format.html { redirect_to store_index_url, notice: "1 item removed!" }
+      format.json { head :no_content }
+    end
+  end
+
+  def removeItem
     @line_item = LineItem.find(params[:id])
     if @line_item.quantity == 1
       @line_item.destroy
+      redirect_to store_index_url
     else
       @line_item.quantity-=1
     end
-    
     @line_item.save
-    #@line_item.destroy
 
     respond_to do |format|
       format.html { redirect_to store_index_url, notice: "1 item removed!" }
+      format.js
       format.json { head :no_content }
     end
   end
