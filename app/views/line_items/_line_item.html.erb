@@ -8,7 +8,7 @@
         <td><%= line_item.product.title %></td>
         <td class="price"><%= number_to_currency(line_item.total_price) %></td>
         <td>
-            <%= button_to 'remove 1 item', remove_item_path(line_item),
+            <%= button_to '-1 item', remove_item_path(line_item),class:"btn btn-danger btn-sm",
             remote: true %>
         </td>
     </tr>

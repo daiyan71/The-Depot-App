@@ -14,13 +14,13 @@
         </tfoot>
     </table>
     <div class="actions" style="display:flex">
-    <%= button_to 'Empty cart', cart,
+    <%= button_to 'Empty cart', cart,class:"btn btn-warning", style: "margin-right:15px",
         method: :delete,
         data: { confirm: 'Are you sure?' } %>
     <% if session['inCheckout']==0 %>
     <%= button_to 'Checkout', new_order_path,
     method: :get,
-    class: "checkout"%>
+    class: "checkout btn btn-success"%>
     </div>
     <% end %>
     <% end %>
