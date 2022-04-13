@@ -7,10 +7,11 @@
 <% cache @products do %>
     <% @products.each do |product| %>
         <% cache product do %>
-            <li>
-
+            <li class="card " style="display:flex; padding-left:15px; padding-top:15px;margin-bottom:10px">
+                <div class="">
                 <%= image_tag(product.image_url) %>
                 <h2><%= product.title %></h2>
+                </div>
                 <p>
                     <%= sanitize(product.description) %>
                 </p>
